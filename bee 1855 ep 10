@@ -1,0 +1,67 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    int largura, altura, i, j, total, x = 0, k = 0, l = 0, direcao, encontrou;
+    char caractere;
+
+    scanf("%d%d", &largura, &altura);
+    char imagem[altura][largura + 1];
+
+    for (i = 0; i < altura; i++)
+        scanf("%s", imagem[i]);
+
+    total = largura * altura;
+
+    for (encontrou = 1; encontrou <= total; ) {
+        if (imagem[k][l] == '>') {
+            l++;
+            encontrou++;
+            direcao = 1;
+            if (l >= largura) break;
+        } else if (imagem[k][l] == 'v') {
+            k++;
+            encontrou++;
+            direcao = 2;
+            if (k >= altura) break;
+        } else if (imagem[k][l] == '<') {
+            l--;
+            encontrou++;
+            direcao = 3;
+            if (l < 0) break;
+        } else if (imagem[k][l] == '^') {
+            k--;
+            encontrou++;
+            direcao = 4;
+            if (k < 0) break;
+        } else if (imagem[k][l] == '*') {
+            encontrou = 1000;
+            break;
+        } else if (imagem[k][l] == '.') {
+            if (direcao == 1) {
+                l++;
+                encontrou++;
+                if (l >= largura) break;
+            } else if (direcao == 2) {
+                k++;
+                encontrou++;
+                if (k >= altura) break;
+            } else if (direcao == 3) {
+                l--;
+                encontrou++;
+                if (l < 0) break;
+            } else if (direcao == 4) {
+                k--;
+                encontrou++;
+                if (k < 0) break;
+            }
+        }
+    }
+
+    if (encontrou == 1000)
+        printf("*\n");
+    else
+        printf("!\n");
+
+    return 0;
+}
