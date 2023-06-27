@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <string.h>
+
+#define TAM_MAX 20
+
+int main() {
+    int N;
+    scanf("%d", &N);
+
+    while (N--) {
+        int K;
+        scanf("%d", &K);
+
+        char idiomas[K][TAM_MAX];
+        for (int i = 0; i < K; i++) {
+            scanf("%s", idiomas[i]);
+        }
+
+        int temIdiomasDiferentes = 0;
+        for (int i = 0; i < K; i++) {
+            for (int j = i + 1; j < K; j++) {
+                if (strcmp(idiomas[i], idiomas[j]) != 0) {
+                    temIdiomasDiferentes = 1;
+                    break;
+                }
+            }
+            if (temIdiomasDiferentes) {
+                break;
+            }
+        }
+
+        char idiomaApropriado[TAM_MAX];
+        if (temIdiomasDiferentes) {
+            strcpy(idiomaApropriado, "ingles");
+        } else {
+            strcpy(idiomaApropriado, idiomas[0]);
+        }
+
+        printf("%s\n", idiomaApropriado);
+    }
+
+    return 0;
+}
