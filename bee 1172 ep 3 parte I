@@ -1,0 +1,21 @@
+#include <stdio.h>
+
+int main() {
+    int X[10];
+  int i; //Declarando o vetor X e a posição do vetor (i)
+  
+    for (i = 0; i < 10; i++) {
+        scanf("%d",&X[i]); //para ler os valores do vetor 
+    }
+    for (i = 0; i < 10; i++) {
+        if (X[i] <= 0) {
+            X[i] = 1; //para substituir os valores negativos e zeros por 1
+        }
+    }
+    for (i = 0; i < 10; i++) {
+        printf("X[%d] = %d\n", i, X[i]);
+      //exibindo o vetor X
+      
+    }
+    return 0;
+}
